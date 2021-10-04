@@ -1,0 +1,195 @@
+
+package javaapplication1;
+
+
+public class JavaApplication1 {
+
+    
+    public static void main(String[] args) {
+        Sola solaObj = new Sola ();
+        Tenis tenisObj = new Tenis();
+       tenisObj.cadastrar();
+       tenisObj.imprimir();
+      /* tenisObj.solaObj.cadastrar();*/
+    }
+    
+}
+
+
+public class Kik {
+ String modelo;
+ int tamanho;
+
+    public Kik(String modelo, String tipobico, int tamanho) {
+        this.modelo = modelo;
+        
+        this.tamanho = tamanho;
+    }
+
+    public Kik() {
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(int tamanho) {
+        this.tamanho = tamanho;
+    }
+    public void cadastrar(){
+        Scanner snc= new Scanner (System.in);
+        System.out.println("Digite o modelo :");
+        this.modelo = snc.next();
+        System.out.println("Digite o tamanho :");
+        this.tamanho = snc.nextInt();
+    }
+    public void imprimir(){
+        System.out.println("Modelo : "+ this.modelo);
+        System.out.println("Tamanho : "+ this.tamanho );
+    }
+         
+}
+
+public class Sapato extends Kik {
+    String tipoBico;
+    Sola solaObj = new Sola();
+
+    public Sapato() {
+    }
+
+    public Sapato(String modelo, String tipobico, int tamanho) {
+        super(modelo, tipobico, tamanho);
+    }
+
+    public Sapato(String tipoBico) {
+        this.tipoBico = tipoBico;
+    }
+
+    public Sapato(String tipoBico, String modelo, String tipobico, int tamanho) {
+        super(modelo, tipobico, tamanho);
+        this.tipoBico = tipoBico;
+    }
+
+    public String getTipoBico() {
+        return tipoBico;
+    }
+
+    public void setTipoBico(String tipoBico) {
+        this.tipoBico = tipoBico;
+    }
+
+@Override
+  public void cadastrar(){
+      super.cadastrar();
+      Scanner scn = new Scanner(System.in);
+      System.out.println("Digite o tipo de bico : ");
+      this.tipoBico = scn.next();
+      
+  }
+   @Override
+      public void imprimir(){
+       super.imprimir();
+       Scanner scn = new Scanner(System.in);
+       System.out.println("tipo bico : "+ this.tipoBico);
+       
+   }
+
+    
+    
+    
+    
+}
+
+public class Sola {
+    String tipoMaterial;
+    boolean antinDerrapante;
+
+    public Sola(String tipoMaterial, boolean antinDerrapante) {
+        this.tipoMaterial = tipoMaterial;
+        this.antinDerrapante = antinDerrapante;
+    }
+
+    public Sola(String tipoMaterial) {
+        this.tipoMaterial = tipoMaterial;
+    }
+
+    public Sola(boolean antinDerrapante) {
+        this.antinDerrapante = antinDerrapante;
+    }
+
+    public Sola() {
+    }
+    public void cadastrar(){
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Digite o tipo de material da sola :");
+        this.tipoMaterial = scn.next();
+        System.out.println("A sola é anti-derrapante ? (S/N");
+        String x ;
+        x= scn.next();
+        if ("S".equals(x)){
+            this.antinDerrapante = true;
+        if ("N".equals(x)){
+            this.antinDerrapante= false;
+            
+           }
+        }
+        
+    }
+   public void imprimir (){
+       System.out.println("Tipo material : "+ this.tipoMaterial);
+       System.out.println("Anti derrapante :"+ this.antinDerrapante);
+   
+   }
+    
+    
+}
+
+public class Tenis extends Kik {
+    String tipoUso;
+    Sola solaObj = new Sola();
+    public Tenis(String modelo, String tipobico, int tamanho) {
+        super(modelo, tipobico, tamanho);
+    }
+
+    public Tenis(String tipoUso) {
+        this.tipoUso = tipoUso;
+    }
+
+    public Tenis() {
+    }
+
+    public Tenis(String tipoUso, String modelo, String tipobico, int tamanho) {
+        super(modelo, tipobico, tamanho);
+        this.tipoUso = tipoUso;
+    }
+
+    @Override
+    public void cadastrar() {
+        super.cadastrar(); 
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Digite o tipo de uso : ");
+        this.tipoUso = scn.next();
+        
+    }
+   @Override
+   public void imprimir(){
+       super.imprimir();
+       Scanner scn = new Scanner(System.in);
+       System.out.println("Tipo de uso : "+ this.tipoUso);
+       solaObj.cadastrar();
+       solaObj.imprimir();
+       
+   }
+    
+    
+    
+    
+}
